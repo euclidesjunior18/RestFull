@@ -28,7 +28,7 @@ public class ProdutoService {
 
     public Produto updateProduto(Produto produto) {
         validarProduto(produto);
-        if (produtoRepository.getProdutoById(produto.getId()).isEmpty()) {
+        if (produtoRepository.getProdutoById(produto.getId()).isPresent()) {
             throw new ProdutoInvalidoException(String.format("Não existe produto com o código %d", produto.getId()));
         }
 
